@@ -1,5 +1,13 @@
 ### Hi there 👋
 
+I'm Yanda, a CS student at the University of Washington
+
+<p align="left"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=discord" alt="yandaboa" /></a> </p>
+
+- 🔭 I’m currently tinkering with robots
+- 🌱 I’m currently learning AI
+- 📫 How to reach me: pidgeoto on discord
+
 <!--
 **yandaboa/yandaboa** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
