@@ -5,8 +5,10 @@ I'm Yanda, a CS student at the University of Washington
 <p align="left"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=discord" alt="yandaboa" /></a> </p>
 
 - 🔭 I’m currently tinkering with robots
-- 🌱 I’m currently learning AI
+- 🌱 I’m currently learning ML
 - 📫 How to reach me: pidgeoto on discord
+
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=yandaboa&theme=dark" alt="yandaboa" /></p>
 
 <!--
 **yandaboa/yandaboa** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
