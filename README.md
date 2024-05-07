@@ -2,7 +2,7 @@
 
 I'm Yanda, a CS student at the University of Washington. Interested in robotics, ML, and healthtech.
 
-<p align="left"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh&title=Commit" alt="yandaboa" /></a> </p>
+<p align="left"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh" alt="yandaboa" /></a> </p>
 
 - 🔭 I’m currently tinkering with robots, learning ML
 - 📫 How to reach me: pidgeoto on discord
