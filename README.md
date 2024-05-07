@@ -1,11 +1,10 @@
 ### Hi there 👋
 
-I'm Yanda, a CS student at the University of Washington
+I'm Yanda, a CS student at the University of Washington. Interested in robotics, ML, and healthtech.
 
 <p align="left"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=discord" alt="yandaboa" /></a> </p>
 
-- 🔭 I’m currently tinkering with robots
-- 🌱 I’m currently learning ML
+- 🔭 I’m currently tinkering with robots, learning ML
 - 📫 How to reach me: pidgeoto on discord
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=yandaboa&theme=dark" alt="yandaboa" /></p>
