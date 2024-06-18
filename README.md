@@ -1,10 +1,10 @@
 ### Hi there 👋
 
-I'm Yanda, an incoming CS student at the University of Washington. Interested in robotics, AI, and healthtech, in no particular order.
+I'm Yanda, an incoming CS student at the University of Washington. Interested in robotics, AI, and startups, in no particular order.
 
 <p align="center"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh&title=Commit,Joined2020,Experience,PullRequest" alt="yandaboa" /></a> </p>
 
-- 🔭 I’m currently tinkering with microprocessors, building AI web apps, learning ML. 
+- 🔭 I’m currently tinkering with microprocessors, building AI web apps for YC, learning ML. 
 - 📫 Reach me on LinkedIn: https://www.linkedin.com/in/yanda-bao-028486235/
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=yandaboa&theme=dark" alt="yandaboa" /></p>
