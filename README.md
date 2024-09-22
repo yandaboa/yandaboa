@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-I'm Yanda, an incoming CS student at the University of Washington. Interested in robotics, AI, games, and startups, in no particular order.
+I'm Yanda, a CS student at the University of Washington. Interested in robotics, AI, games, and startups, in no particular order.
 
 <p align="center"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh&title=Commit,Joined2020,Experience,PullRequest" alt="yandaboa" /></a> </p>
 
