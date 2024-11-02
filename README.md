@@ -4,8 +4,8 @@ I'm Yanda, a CS student at the University of Washington. Interested in robotics,
 
 <p align="center"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh&title=Commit,Joined2020,Experience,PullRequest" alt="yandaboa" /></a> </p>
 
-- 🔭 I’m currently learning ML and making games. 
-- 📫 Reach me on LinkedIn: https://www.linkedin.com/in/yanda-bao-028486235/
+- 🔭 I’m currently learning about RL!
+- 📫 Reach me on LinkedIn: https://www.linkedin.com/in/yanda-bao/
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=yandaboa&theme=dark" alt="yandaboa" /></p>
 
