@@ -5,7 +5,7 @@ I'm Yanda, a CS student at the University of Washington. Interested in robotics 
 <p align="center"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh&title=Commit,Joined2020,Experience,PullRequest" alt="yandaboa" /></a> </p>
 
 - 😄 Pronouns: he/him
-- 🔭 I’m currently learning about RL and CV!
+- 🔭 I’m currently learning about RL, CV, and Gen AI!
 - 📫 Reach me on LinkedIn: https://www.linkedin.com/in/yanda-bao/
 - ⚡ Fun fact: I've called ~20 different places home!
 
