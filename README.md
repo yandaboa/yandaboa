@@ -7,7 +7,6 @@ I'm Yanda, a CS student at the University of Washington. Interested in robotics 
 - 😄 Pronouns: he/him
 - 🔭 I’m currently learning about RL, CV, and Gen AI!
 - 📫 Reach me on LinkedIn: https://www.linkedin.com/in/yanda-bao/
-- ⚡ Fun fact: I've called ~20 different places home!
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=yandaboa&theme=dark" alt="yandaboa" /></p>
 
