@@ -1,4 +1,4 @@
-I'm Yanda, studying CS at UW. I like robotics/AI research and startups.
+Hi I'm Yanda, studying CS at UW. I like robotics/AI research and startups.
 
 <!--
 <p align="center"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh&title=Commit,Joined2020,Experience,PullRequest" alt="yandaboa" /></a> </p>
