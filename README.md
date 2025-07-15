@@ -1,16 +1,15 @@
-### Hi there 👋
+I'm Yanda, studying CS at UW. I like robotics/AI research and startups.
 
-I'm Yanda, a CS student at the University of Washington. Interested in robotics and AI research. Also into games and startups.
-
+<!--
 <p align="center"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh&title=Commit,Joined2020,Experience,PullRequest" alt="yandaboa" /></a> </p>
 
-- 😄 Pronouns: he/him
-- 🔭 I’m currently learning about RL, CV, and Gen AI!
-- 📫 Reach me on LinkedIn: https://www.linkedin.com/in/yanda-bao/
+
+- I’m currently learning about RL, CV, and Gen AI!
+- Reach me on LinkedIn: https://www.linkedin.com/in/yanda-bao/
+
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=yandaboa&theme=dark" alt="yandaboa" /></p>
 
-<!--
 **yandaboa/yandaboa** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
