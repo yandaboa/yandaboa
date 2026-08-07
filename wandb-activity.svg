@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="782" height="152" viewBox="0 0 782 152" role="img" aria-label="Weights &amp; Biases run activity for yandabao">
 <style>
   text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 9px; fill: #656d76; }
-  .l0 { fill: #ebedf0; }
-  .l1 { fill: #9be9a8; }
-  .l2 { fill: #40c463; }
-  .l3 { fill: #30a14e; }
-  .l4 { fill: #216e39; }
+  .l0 { fill: #f0f0f0; }
+  .l1 { fill: #cbe7f5; }
+  .l2 { fill: #6dc7e8; }
+  .l3 { fill: #2f93bf; }
+  .l4 { fill: #1a5f7f; }
   @media (prefers-color-scheme: dark) {
     text { fill: #7d8590; }
-    .l0 { fill: #161b22; }
-    .l1 { fill: #0e4429; }
-    .l2 { fill: #006d32; }
-    .l3 { fill: #26a641; }
-    .l4 { fill: #39d353; }
+    .l0 { fill: #20242b; }
+    .l1 { fill: #173d52; }
+    .l2 { fill: #2b7a9e; }
+    .l3 { fill: #54b3d8; }
+    .l4 { fill: #8fd4ef; }
   }
 </style>
 <text x="0" y="43">Mon</text>
