@@ -1,5 +1,12 @@
 Hi I'm Yanda, studying CS at UW. I like robotics/AI research and startups. Prev SWE intern @ Roblox
 
+### Experiment activity
+
+[![W&B run activity](wandb-activity.svg)](https://wandb.ai/yandabao)
+
+<sub>Every W&B run I've launched in the last year. Regenerated daily by
+[`.github/workflows/wandb-activity.yml`](.github/workflows/wandb-activity.yml).</sub>
+
 <!--
 <p align="center"> <a href="https://github.com/yandaboa"><img src="https://github-profile-trophy.vercel.app/?username=yandaboa&theme=juicyfresh&title=Commit,Joined2020,Experience,PullRequest" alt="yandaboa" /></a> </p>
 
