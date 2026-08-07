@@ -79,6 +79,43 @@ def discover_entities(api, explicit):
     return candidates
 
 
+def viewer_username(api):
+    try:
+        return getattr(api.viewer, "username", None)
+    except Exception as exc:  # noqa: BLE001 - diagnostics only
+        print(f"  (viewer unavailable: {exc})", file=sys.stderr)
+        return None
+
+
+def project_runs(api, path, cutoff, username):
+    """Runs in a project since cutoff, restricted to ones `username` created.
+
+    Prefers a server-side username filter; falls back to filtering client-side
+    if the backend rejects it. Team projects contain other people's runs, so
+    without this the graph would credit their work to you.
+    """
+    base = {"createdAt": {"$gte": cutoff}}
+
+    if username:
+        try:
+            runs = api.runs(path, filters={**base, "username": username}, per_page=500)
+            for run in runs:
+                yield run
+            return
+        except Exception:  # noqa: BLE001 - backend may not filter on username
+            pass
+
+    for run in api.runs(path, filters=base, per_page=500):
+        if not username:
+            yield run
+            continue
+        try:
+            if getattr(run.user, "username", None) == username:
+                yield run
+        except Exception:  # noqa: BLE001 - skip runs with an unreadable owner
+            continue
+
+
 def fetch_counts(entity, start):
     """Map of date -> number of runs created that day, across all projects."""
     import wandb
@@ -87,7 +124,9 @@ def fetch_counts(entity, start):
     cutoff = f"{start.isoformat()}T00:00:00Z"
     counts = Counter()
 
+    username = viewer_username(api)
     candidates = discover_entities(api, entity)
+    print(f"viewer: {username}", file=sys.stderr)
     print(f"entity candidates: {candidates}", file=sys.stderr)
 
     scanned = 0
@@ -98,24 +137,19 @@ def fetch_counts(entity, start):
             print(f"  {name}: unreadable ({exc})", file=sys.stderr)
             continue
 
-        print(f"  {name}: {len(projects)} projects", file=sys.stderr)
+        subtotal = 0
         for project in projects:
             scanned += 1
-            runs = api.runs(
-                f"{name}/{project.name}",
-                filters={"createdAt": {"$gte": cutoff}},
-                per_page=500,
-            )
-            for run in runs:
+            for run in project_runs(api, f"{name}/{project.name}", cutoff, username):
                 raw = run.created_at
                 if not raw:
                     continue
                 # created_at is ISO 8601, sometimes with a trailing Z.
                 stamp = datetime.fromisoformat(raw.replace("Z", "+00:00"))
                 counts[stamp.date()] += 1
+                subtotal += 1
 
-        if counts:
-            break
+        print(f"  {name}: {len(projects)} projects, {subtotal} runs", file=sys.stderr)
 
     print(f"scanned {scanned} projects, {sum(counts.values())} runs", file=sys.stderr)
     return counts
