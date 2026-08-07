@@ -52,6 +52,33 @@ def level(count):
     return 4
 
 
+def discover_entities(api, explicit):
+    """Entities worth scanning, most likely first.
+
+    The username in a wandb.ai profile URL is not always the entity that owns
+    the projects, so fall back to whatever the API key can actually see.
+    """
+    candidates = []
+
+    def add(name):
+        if name and name not in candidates:
+            candidates.append(name)
+
+    add(explicit)
+    for attr in ("default_entity", "viewer"):
+        try:
+            value = getattr(api, attr, None)
+            add(value if isinstance(value, str) else getattr(value, "entity", None))
+            if value is not None and not isinstance(value, str):
+                add(getattr(value, "username", None))
+                for team in getattr(value, "teams", None) or []:
+                    add(team if isinstance(team, str) else getattr(team, "name", None))
+        except Exception as exc:  # noqa: BLE001 - diagnostics only
+            print(f"  ({attr} unavailable: {exc})", file=sys.stderr)
+
+    return candidates
+
+
 def fetch_counts(entity, start):
     """Map of date -> number of runs created that day, across all projects."""
     import wandb
@@ -59,24 +86,38 @@ def fetch_counts(entity, start):
     api = wandb.Api(timeout=60)
     cutoff = f"{start.isoformat()}T00:00:00Z"
     counts = Counter()
-    projects = 0
 
-    for project in api.projects(entity):
-        projects += 1
-        runs = api.runs(
-            f"{entity}/{project.name}",
-            filters={"createdAt": {"$gte": cutoff}},
-            per_page=500,
-        )
-        for run in runs:
-            raw = run.created_at
-            if not raw:
-                continue
-            # created_at is ISO 8601, sometimes with a trailing Z.
-            stamp = datetime.fromisoformat(raw.replace("Z", "+00:00"))
-            counts[stamp.date()] += 1
+    candidates = discover_entities(api, entity)
+    print(f"entity candidates: {candidates}", file=sys.stderr)
 
-    print(f"scanned {projects} projects, {sum(counts.values())} runs", file=sys.stderr)
+    scanned = 0
+    for name in candidates:
+        try:
+            projects = list(api.projects(name))
+        except Exception as exc:  # noqa: BLE001 - an entity may be unreadable
+            print(f"  {name}: unreadable ({exc})", file=sys.stderr)
+            continue
+
+        print(f"  {name}: {len(projects)} projects", file=sys.stderr)
+        for project in projects:
+            scanned += 1
+            runs = api.runs(
+                f"{name}/{project.name}",
+                filters={"createdAt": {"$gte": cutoff}},
+                per_page=500,
+            )
+            for run in runs:
+                raw = run.created_at
+                if not raw:
+                    continue
+                # created_at is ISO 8601, sometimes with a trailing Z.
+                stamp = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+                counts[stamp.date()] += 1
+
+        if counts:
+            break
+
+    print(f"scanned {scanned} projects, {sum(counts.values())} runs", file=sys.stderr)
     return counts
 
 
