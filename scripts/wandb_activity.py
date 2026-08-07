@@ -21,9 +21,9 @@ PITCH = CELL + GAP
 PAD_LEFT = 30
 PAD_TOP = 20
 
-# GitHub's own contribution palettes, light and dark.
-LIGHT = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
-DARK = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
+# W&B's own heatmap palette: pale grey through cyan to deep teal.
+LIGHT = ["#f0f0f0", "#cbe7f5", "#6dc7e8", "#2f93bf", "#1a5f7f"]
+DARK = ["#20242b", "#173d52", "#2b7a9e", "#54b3d8", "#8fd4ef"]
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
