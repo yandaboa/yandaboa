@@ -25,6 +25,13 @@ PAD_TOP = 20
 LIGHT = ["#f0f0f0", "#cbe7f5", "#6dc7e8", "#2f93bf", "#1a5f7f"]
 DARK = ["#20242b", "#173d52", "#2b7a9e", "#54b3d8", "#8fd4ef"]
 
+# Days in the active streak get the gold accent instead.
+LIGHT_GOLD = ["#f0f0f0", "#efd9a5", "#dda23c", "#c2871c", "#8b5e0a"]
+DARK_GOLD = ["#20242b", "#4a3410", "#8a6114", "#c99a2e", "#f0c95a"]
+
+STREAK_TEXT_LIGHT = "#c2871c"
+STREAK_TEXT_DARK = "#e8b94a"
+
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -155,7 +162,21 @@ def fetch_counts(entity, start):
     return counts
 
 
-def render(counts, start, end, entity):
+def current_streak(counts, today):
+    """Consecutive days ending today that each have at least one run.
+
+    A run-free today doesn't break the streak — the day may simply not be
+    over yet — so counting starts from yesterday in that case.
+    """
+    day = today if counts.get(today, 0) else today - timedelta(days=1)
+    days = set()
+    while counts.get(day, 0):
+        days.add(day)
+        day -= timedelta(days=1)
+    return days
+
+
+def render(counts, start, end, entity, today=None):
     width = PAD_LEFT + WEEKS * PITCH + 10
     height = PAD_TOP + 7 * PITCH + 34
 
@@ -169,10 +190,16 @@ def render(counts, start, end, entity):
     ]
     for i, color in enumerate(LIGHT):
         out.append(f"  .l{i} {{ fill: {color}; }}")
+    for i, color in enumerate(LIGHT_GOLD):
+        out.append(f"  .g{i} {{ fill: {color}; }}")
+    out.append(f"  .streak {{ fill: {STREAK_TEXT_LIGHT}; font-weight: 600; }}")
     out.append("  @media (prefers-color-scheme: dark) {")
     out.append("    text { fill: #7d8590; }")
     for i, color in enumerate(DARK):
         out.append(f"    .l{i} {{ fill: {color}; }}")
+    for i, color in enumerate(DARK_GOLD):
+        out.append(f"    .g{i} {{ fill: {color}; }}")
+    out.append(f"    .streak {{ fill: {STREAK_TEXT_DARK}; }}")
     out.append("  }")
     out.append("</style>")
 
@@ -180,6 +207,8 @@ def render(counts, start, end, entity):
     for row, label in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
         y = PAD_TOP + row * PITCH + CELL - 2
         out.append(f'<text x="0" y="{y}">{label}</text>')
+
+    streak = current_streak(counts, today or date.today())
 
     total = 0
     seen_months = set()
@@ -198,16 +227,25 @@ def render(counts, start, end, entity):
         count = counts.get(day, 0)
         total += count
         noun = "run" if count == 1 else "runs"
+        # Streak days keep their density shade but switch to the gold ramp.
+        cls = f"g{level(count)}" if day in streak else f"l{level(count)}"
+        tip = f"{count} {noun} on {day.isoformat()}"
+        if day in streak:
+            tip += " (streak)"
         out.append(
-            f'<rect class="l{level(count)}" x="{x}" y="{y}" width="{CELL}" '
+            f'<rect class="{cls}" x="{x}" y="{y}" width="{CELL}" '
             f'height="{CELL}" rx="2" ry="2">'
-            f"<title>{count} {noun} on {day.isoformat()}</title></rect>"
+            f"<title>{tip}</title></rect>"
         )
         day += timedelta(days=1)
 
-    # Footer: total on the left, Less/More legend on the right.
+    # Footer: total and streak on the left, Less/More legend on the right.
     base = PAD_TOP + 7 * PITCH + 13
-    out.append(f'<text x="{PAD_LEFT}" y="{base}">{total} runs in the last year</text>')
+    footer = f"{total} runs in the last year"
+    if streak:
+        # "8 day streak", not "days" — matches how W&B words it.
+        footer += f'<tspan class="streak" dx="14">\N{FIRE} {len(streak)} day streak</tspan>'
+    out.append(f'<text x="{PAD_LEFT}" y="{base}">{footer}</text>')
 
     legend_x = width - 10 - (5 * PITCH + 62)
     out.append(f'<text x="{legend_x}" y="{base}">Less</text>')
