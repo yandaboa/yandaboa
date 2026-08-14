@@ -1,5 +1,7 @@
 Hi I'm Yanda, studying CS at UW. I like robotics/AI research and startups. Prev SWE intern @ Roblox
 
+more here: https://yandaboa.github.io/
+
 More active on wandb than github :)
 
 [![W&B run activity](wandb-activity.svg)](https://wandb.ai/yandabao)
